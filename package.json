@@ -1,0 +1,8 @@
+{
+  "name": "prac-3d",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/k3nt0w/prac-3d.git",
+  "author": "k3nt0w <kento.watanabe.11@gmail.com>",
+  "license": "MIT"
+}
