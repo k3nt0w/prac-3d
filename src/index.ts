@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import gravel from '../textures/gravel.jpg'
 
 let camera: THREE.Camera
 let scene: THREE.Scene
@@ -22,7 +23,11 @@ function init() {
   scene = new THREE.Scene()
 
   geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2)
-  material = new THREE.MeshNormalMaterial()
+
+  const loader = new THREE.TextureLoader()
+  material = new THREE.MeshBasicMaterial({
+    map: loader.load(gravel)
+  })
 
   mesh = new THREE.Mesh(geometry, material)
   scene.add(mesh)
