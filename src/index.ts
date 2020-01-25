@@ -32,20 +32,13 @@ function init() {
   geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2)
 
   const loader = new THREE.TextureLoader()
-  const gravelTexture = loader.load(gravel)
+
   const waterTexture = loader.load(water)
   const woodTexture = loader.load(wood)
 
-  if (selectedTexture == 'water') {
-    map = waterTexture
-  } else if (selectedTexture == 'water') {
-    map = woodTexture
-  }
-
   material = new THREE.MeshBasicMaterial({
-    map
+    map: waterTexture
   })
-
   mesh = new THREE.Mesh(geometry, material)
   scene.add(mesh)
   material.needsUpdate = true
@@ -58,12 +51,14 @@ function init() {
   const selectWater = (event: MouseEvent) => {
     console.log('water')
     selectedTexture = 'water'
-    mesh.updateMatrix()
+    // @ts-ignore
+    mesh.material.map = waterTexture
   }
   const selectWood = (event: MouseEvent) => {
     console.log('wood')
     selectedTexture = 'wood'
-    mesh.updateMatrix()
+    // @ts-ignore
+    mesh.material.map = woodTexture
   }
   waterE?.addEventListener('click', selectWater, false)
   woodE?.addEventListener('click', selectWood, false)
